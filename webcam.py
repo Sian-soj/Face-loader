@@ -1,24 +1,24 @@
 import cv2
 import tkinter as tk
 from tkinter import ttk
+import threading
 import serial
 import time
-import threading
 
-# ---------- Arduino Serial Setup ----------
-# Change 'COM3' to your Arduino's port (Windows: COMx, Mac/Linux: '/dev/ttyUSB0')
+# --- Try to connect to Arduino ---
 try:
-    arduino = serial.Serial('COM7', 9600, timeout=1)
-    time.sleep(2)  # wait for Arduino to reset
+    arduino = serial.Serial('COM9', 9600, timeout=1)
+    time.sleep(2)
+    print("✅ Arduino connected on COM9")
 except:
     arduino = None
-    print("⚠️ No Arduino connected. Running without hardware.")
+    print("⚠️ Arduino not connected — running in simulation mode")
 
-# ---------- Face Detection Setup ----------
+# --- Face detection setup ---
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 cap = cv2.VideoCapture(0)
 
-# ---------- Tkinter GUI Setup ----------
+# --- GUI Setup ---
 root = tk.Tk()
 root.title("Focus Loader")
 root.geometry("400x150")
@@ -33,28 +33,29 @@ progress_value = 0
 progress_max = 100
 focus_detected = False
 
-# ---------- Logic ----------
+# --- Face detection thread ---
 def detect_face():
-    global progress_value, focus_detected
+    global focus_detected
 
     while True:
         ret, frame = cap.read()
         if not ret:
+            print("⚠️ Failed to grab frame.")
             break
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-        if len(faces) > 0:  # Face detected
-            focus_detected = True
-            if arduino:
-                arduino.write(b"1")  # Send '1' to Arduino
-        else:  # No face
-            focus_detected = False
-            if arduino:
-                arduino.write(b"0")  # Send '0' to Arduino
+        focus_detected = len(faces) > 0
 
-        # Optional: show webcam window for debugging
+        # Send signal to Arduino
+        if arduino:
+            try:
+                arduino.write(b'1' if focus_detected else b'0')
+            except:
+                print("⚠️ Failed to write to Arduino.")
+
+        # Show webcam window
         cv2.imshow("Webcam - Press Q to quit", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
@@ -62,28 +63,27 @@ def detect_face():
     cap.release()
     cv2.destroyAllWindows()
 
+# --- Progress Bar Update ---
 def update_progress():
     global progress_value
+
     if focus_detected:
         progress_value += 1
         label_status.config(text="Status: Focused ✅")
     else:
+        progress_value -= 2
         label_status.config(text="Status: Distracted ❌")
 
-    # Limit and update
-    if progress_value > progress_max:
-        progress_value = progress_max
+    progress_value = max(0, min(progress_max, progress_value))
     progress["value"] = progress_value
 
-    root.after(100, update_progress)  # run again every 100ms
+    root.after(100, update_progress)
 
-# ---------- Start Threads ----------
+# --- Start everything ---
 threading.Thread(target=detect_face, daemon=True).start()
 update_progress()
-
-# ---------- Run GUI ----------
 root.mainloop()
 
-# Close serial on exit
+# --- Cleanup ---
 if arduino:
     arduino.close()
