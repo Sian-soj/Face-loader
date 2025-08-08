@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Face-to-Face Loader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>👀 Face-to-Face Loader</h1>
+  
+  <div id="loader-container">
+    <div id="loader-bar"></div>
+  </div>
+
+  <p id="status">Looking for your beautiful face... 😏</p>
+  
+  <video id="video" width="320" height="240" autoplay muted playsinline></video>
+
+  <script src="https://unpkg.com/face-api.js"></script>
+
+  <script>
+    async function startCamera() {
+      try {
+        // Force browser to ask for permission again by stopping old streams
+        const oldVideo = document.getElementById('video');
+        if (oldVideo.srcObject) {
+          oldVideo.srcObject.getTracks().forEach(track => track.stop());
+        }
+
+        // Ask for camera every time
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('video');
+        video.srcObject = stream;
+        document.getElementById('status').textContent = "LOADING your page. LOOOK HERE !! 😈";
+      } catch (err) {
+        document.getElementById('status').textContent = "Camera access denied 🚫";
+        console.error("Camera error:", err);
+      }
+    }
+
+    // Ask permission on every reload
+    window.addEventListener('load', () => {
+      startCamera();
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
