@@ -128,18 +128,19 @@ Fully assembled Arduino Uno with LDR and dual-LED indicator circuit, actively de
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://drive.google.com/file/d/1a6AUWubB1JMmX5QQKGh7gqcDCZbs9REf/view?usp=drivesdk
+A small overview at how this device works........
 
 # Additional Demos
-[Add any extra demo materials/links]
+>Future applications
+. Driver Drowsiness Detection – Alerts drivers when they blink excessively or lose focus, helping prevent accidents.
+' Adaptive Lighting Systems – Automatically adjust room or screen brightness based on LDR readings for comfort and energy efficiency.
+' Exam Integrity Systems – Monitor candidates' gaze and environment to prevent cheating in online/offline exams.
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+Sian Soj – Integrated and developed both hardware and software components, ensuring smooth interaction between sensors, Arduino, and the overall system.
+Vighnesh V Gopal – Designed and implemented the frontend and backend using Python, enabling user interaction, data processing, and visual feedback.
 
----
 Made with ❤️ at TinkerHub Useless Projects 
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
