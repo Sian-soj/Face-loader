@@ -97,38 +97,34 @@ python main.py
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots 
+<img width="1920" height="1080" alt="Screenshot 2025-08-09 082122" src="https://github.com/user-attachments/assets/5f72606d-d89b-4c70-b588-5bb9c51c18ec" />
+Image 1 (Looking at screen)
+System detects focus — face is directly in front of the camera, maintaining the 'Focused ✅' status and keeping the distraction count at zero.
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="1080" alt="Screenshot 2025-08-09 082141" src="https://github.com/user-attachments/assets/045f379a-6519-4b77-9c1b-bb3a47c591f6" />
+Image 2 (Looking away)
+System detects distraction — face is not aligned with the screen, triggering the 'Distracted ❌' status and increasing the distraction count.
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
+![arduino](https://github.com/user-attachments/assets/a5b34f8a-03dc-45c2-a71b-06fb8c540190)
+Arduino-based light monitoring module — using an LDR and LED indicators to detect room lighting conditions and communicate with the focus detection system for automatic loader reset in darkness
 
 # Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+<img width="1030" height="762" alt="file_2025-08-09_03 22 38" src="https://github.com/user-attachments/assets/e7c9c32e-3bf5-4ef9-aa5c-d3dc29bd9998" />
+LDR → one side to 5V, other side to A0 and 10kΩ to GND; Red LED anode via 220Ω to D12, cathode to GND; Green LED anode via 220Ω to D13, cathode to GND; Arduino 5V to breadboard +, GND to breadboard –.
 
 # Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
+Components
+![components](https://github.com/user-attachments/assets/ba6e73ad-6277-460d-8ad2-f3d0da49c5c7)
+Arduino Uno with USB cable, breadboard, jumper wires, red & green LEDs, resistors, and an LDR module for light detection.
 
-![Build](Add photos of build process here)
-*Explain the build steps*
+Process
+![process](https://github.com/user-attachments/assets/1e15bcf9-9051-41ee-aa8c-dcf4197bb75a)
+Connecting LEDs with resistors to the Arduino Uno on a breadboard as part of the light detection and indicator circuit setup.
 
-![Final](Add photo of final product here)
-*Explain the final build*
+Final Connection
+![arduino](https://github.com/user-attachments/assets/e1766e0c-a080-452f-bdbf-cc38823f67f8)
+Fully assembled Arduino Uno with LDR and dual-LED indicator circuit, actively detecting ambient light levels and signaling status.
 
 ### Project Demo
 # Video
