@@ -89,7 +89,7 @@ Connect Hardware: Ensure the Arduino board is connected to the computer via USB.
 Verify File Paths: Open the Python script and verify that the absolute path to your test.bat file is correct.
 
 Execute the Script:
-Run the main application from your terminal:
+Run the main application blink.py from your terminal:
 
 Bash
 
