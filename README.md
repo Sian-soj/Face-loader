@@ -1,48 +1,99 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# NOKKI IRUNNONAM 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Dual Core
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Sian Soj - College of engineering perumon
+- Member 2: Vighnesh V Gopal - College of engineering perumon
 
 ### Project Description
-[2-3 lines about what your project does]
+This device basically makes sure you see the loading screen all the way till the end of the loading. Yeah basically you cant believe on your childhood myth where not looking on the screen will load it faster :)
+This project uses face-tracking technology to detect when the user is looking at the screen and only loads the webpage or software when proper eye contact is maintained. If the user looks away, the system pauses or hides the content, encouraging focus and reducing distractions hehe.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Remember when we’d look away from the loading screen thinking it’d load faster? This project turns that superstition into reality—blink or look away, and it stops loading!"
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+No looking away this time — the loading screen is too good to miss 😎✨
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+Languages used
+For Software:
+Languages used
+
+Python 3.x: The core language for the desktop application, handling all logic, computer vision, and GUI.
+C++/Wiring: The language used for programming the Arduino microcontroller.
+
+Frameworks used
+Tkinter: A standard Python GUI framework used to build the user-facing application window, progress bar, and status labels.
+
+Libraries used
+OpenCV (cv2): For real-time computer vision tasks, including accessing the webcam and implementing face/eye detection with Haar Cascades.
+pySerial: To establish and manage serial communication between the Python script and the Arduino board.
+psutil: For cross-platform system process monitoring, used to detect when a web browser is opened or closed.
+threading: To run the camera detection and serial communication loops in background threads, ensuring the GUI remains responsive.
+subprocess: To execute external system commands, specifically for running the .bat script to close the web browser.
+
+Tools used
+IDE/Text Editor: Visual Studio Code, PyCharm, or a similar editor for Python development.
+Arduino IDE: For writing, compiling, and uploading the sketch to the Arduino microcontroller.
+Git & GitHub: For version control and repository management (standard practice).
 
 For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+List Main Components
+- Microcontroller: Arduino Uno R3
+- LEDs x2
+- LDR sensor
+
+List specification
+Microcontroller: Arduino Uno R3 (ATmega328P, 5V logic level, 16 MHz clock speed).
+Webcam: Minimum resolution of 640x480 for reliable face detection.
+Serial Communication: 9600 baud rate.
+
+- List tools required
+USB Type A to Type B cable: To connect the Arduino to the computer for programming and communication.
+Breadboard: for prototyping
 
 ### Implementation
 For Software:
-# Installation
-[commands]
+### Installation
 
-# Run
-[commands]
+Clone the Repository:
+Download and place the project files in a single directory.
 
+(Recommended) Create a Virtual Environment:
+Open a terminal in the project directory and run:
+
+Bash
+
+python -m venv venv
+venv\Scripts\activate
+Install Dependencies:
+Install all the required Python libraries with a single command:
+
+Bash
+
+pip install opencv-python pyserial psutil
+Run
+
+Connect Hardware: Ensure the Arduino board is connected to the computer via USB.
+
+Verify File Paths: Open the Python script and verify that the absolute path to your test.bat file is correct.
+
+Execute the Script:
+Run the main application from your terminal:
+
+Bash
+
+python main.py
 ### Project Documentation
 For Software:
 
