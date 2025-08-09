@@ -1,7 +1,8 @@
 int redPin = 13; // distracte
+int greenpin = 12; // focused
 int ldrPin = A0; // dark and light
 int threshold = 700;
-int greenpin = 12; // focused
+
 
 void setup()
 {
